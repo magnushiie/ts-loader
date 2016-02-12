@@ -91,7 +91,7 @@ interface TSCompatibleCompiler {
 
 var instances = <TSInstances>{};
 var webpackInstances = [];
-const scriptRegex = /\.tsx?$/i;
+const scriptRegex = /\.[jt]sx?$/i;
 
 // Take TypeScript errors, parse them and format to webpack errors
 // Optionally adds a file name
@@ -377,7 +377,7 @@ function ensureTypeScriptInstance(loaderOptions: LoaderOptions, loader: any): { 
                 try {
                     resolvedFileName = resolver.resolveSync(path.normalize(path.dirname(containingFile)), moduleName)
 
-                    if (!resolvedFileName.match(/\.tsx?$/)) resolvedFileName = null;
+                    if (!resolvedFileName.match(/\.[jt]sx?$/)) resolvedFileName = null;
                     else resolutionResult = { resolvedFileName };
                 }
                 catch (e) { resolvedFileName = null }
